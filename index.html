@@ -137,7 +137,7 @@
 <body>
     <!-- Fallback for users with JavaScript disabled -->
     <noscript>
-        <div style="background: #f87171; color: #fff; padding: 1rem; text-align: center;">
+        <div class="noscript-warning">
             Diese Seite benötigt JavaScript für volle Funktionalität. Bitte aktivieren Sie JavaScript in Ihrem Browser.
         </div>
     </noscript>
@@ -403,7 +403,7 @@
                 <h2 class="section-title">Open Source <span class="highlight">Portfolio</span></h2>
                 <p class="section-subtitle">Aktuelle GitHub Projekte und Beiträge</p>
 
-                <div class="github-stats" role="region" aria-label="GitHub Statistiken">
+                <section class="github-stats" aria-label="GitHub Statistiken">
                     <div class="github-stat">
                         <span class="stat-value" id="github-repos">0</span>
                         <span class="stat-label">Repositories</span>
@@ -416,14 +416,14 @@
                         <span class="stat-value" id="github-followers">0</span>
                         <span class="stat-label">Followers</span>
                     </div>
-                </div>
+                </section>
 
-                <div class="github-repos-grid" id="github-repos-container" role="region" aria-label="GitHub Repositories">
+                <section class="github-repos-grid" id="github-repos-container" aria-label="GitHub Repositories">
                     <div class="loading-placeholder">
                         <span class="loading-spinner" aria-hidden="true"></span>
                         <span>Lade Repositories...</span>
                     </div>
-                </div>
+                </section>
 
                 <div class="github-cta">
                     <a href="https://github.com/vziegler2"
@@ -662,7 +662,7 @@
         </section>
     </main>
 
-    <footer role="contentinfo">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
@@ -683,11 +683,13 @@
                     </ul>
                 </nav>
 
-                <address class="footer-contact">
+                <div class="footer-contact">
                     <h4>Kontakt</h4>
-                    <p><a href="mailto:kontakt@sap-entwickler.de">kontakt@sap-entwickler.de</a></p>
-                    <p><a href="tel:+491234567890">+49 123 456 7890</a></p>
-                </address>
+                    <address>
+                        <p><a href="mailto:kontakt@sap-entwickler.de">kontakt@sap-entwickler.de</a></p>
+                        <p><a href="tel:+491234567890">+49&nbsp;123&nbsp;456&nbsp;7890</a></p>
+                    </address>
+                </div>
             </div>
 
             <div class="footer-bottom">

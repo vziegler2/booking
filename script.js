@@ -556,6 +556,19 @@ function initPaymentMethods() {
     }
 }
 
+// HTML escaping for XSS prevention
+function escapeHtml(text) {
+    if (typeof text !== 'string') {
+        return text;
+    }
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 // GitHub Portfolio Integration
 function initGitHubPortfolio() {
     const username = 'vziegler2';
@@ -591,10 +604,10 @@ function initGitHubPortfolio() {
             // Generate repository cards
             container.innerHTML = repos.map(repo => `
                 <div class="github-repo-card">
-                    <h4><a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a></h4>
-                    <p>${repo.description || 'Keine Beschreibung verfügbar'}</p>
+                    <h4><a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener">${escapeHtml(repo.name)}</a></h4>
+                    <p>${escapeHtml(repo.description) || 'Keine Beschreibung verfügbar'}</p>
                     <div class="repo-meta">
-                        ${repo.language ? `<span><span class="repo-language" style="background: ${getLanguageColor(repo.language)}"></span>${repo.language}</span>` : ''}
+                        ${repo.language ? `<span><span class="repo-language" style="background: ${getLanguageColor(repo.language)}"></span>${escapeHtml(repo.language)}</span>` : ''}
                         <span>&#9733; ${repo.stargazers_count}</span>
                         <span>&#128279; ${repo.forks_count}</span>
                     </div>

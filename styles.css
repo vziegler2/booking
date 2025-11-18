@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+/* Noscript Warning */
+.noscript-warning {
+    background: #f87171;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
 :root {
     --primary: #0070f3;
     --primary-dark: #0051a8;
