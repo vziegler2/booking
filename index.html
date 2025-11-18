@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Entwickler Buchen | Ihr Experte für SAP-Lösungen</title>
+    <meta name="description" content="Professioneller SAP-Entwickler für ABAP, Fiori, S/4HANA und mehr. Jetzt buchen für Ihr Projekt.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-icon">&#9670;</span>
+                SAP<span class="highlight">Dev</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Start</a></li>
+                <li><a href="#skills">Kompetenzen</a></li>
+                <li><a href="#services">Leistungen</a></li>
+                <li><a href="#projects">Projekte</a></li>
+                <li><a href="#booking" class="btn-nav">Jetzt Buchen</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="subtitle">SAP-Entwickler & Berater</p>
+                    <h1>Ihr Partner für <span class="highlight">SAP-Lösungen</span></h1>
+                    <p class="description">
+                        Mit über 10 Jahren Erfahrung in der SAP-Entwicklung biete ich Ihnen
+                        maßgeschneiderte Lösungen für ABAP, Fiori, S/4HANA und mehr.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#booking" class="btn btn-primary">Projekt anfragen</a>
+                        <a href="#services" class="btn btn-secondary">Leistungen ansehen</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Jahre Erfahrung</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Projekte</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Kundenzufriedenheit</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <pre class="code-content">
+<span class="keyword">REPORT</span> z_custom_solution.
+
+<span class="keyword">DATA</span>: lv_result <span class="keyword">TYPE</span> string.
+
+<span class="keyword">START-OF-SELECTION</span>.
+  <span class="keyword">PERFORM</span> create_value.
+
+<span class="keyword">FORM</span> create_value.
+  lv_result = <span class="string">'Erfolg!'</span>.
+  <span class="keyword">WRITE</span>: lv_result.
+<span class="keyword">ENDFORM</span>.</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">Technische <span class="highlight">Kompetenzen</span></h2>
+                <p class="section-subtitle">Umfassende Expertise in SAP-Technologien</p>
+
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">&#60;/&#62;</div>
+                        <h3>ABAP/4</h3>
+                        <p>Klassisches und modernes ABAP, OO-ABAP, CDS Views, AMDP</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">&#9881;</div>
+                        <h3>SAP Fiori/UI5</h3>
+                        <p>Moderne Benutzeroberflächen, Fiori Elements, Custom Apps</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">&#9729;</div>
+                        <h3>S/4HANA</h3>
+                        <p>Migration, Implementierung, Custom Code Adaptation</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">&#8644;</div>
+                        <h3>SAP Integration</h3>
+                        <p>RFC, BAPI, IDoc, OData, REST APIs, SAP PI/PO</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">&#9776;</div>
+                        <h3>SAP BTP</h3>
+                        <p>Cloud Foundry, Kyma, SAP CAP, Extension Suite</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">&#128202;</div>
+                        <h3>Reporting</h3>
+                        <p>ALV, Adobe Forms, SAPscript, BIRT, Crystal Reports</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 93%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Meine <span class="highlight">Leistungen</span></h2>
+                <p class="section-subtitle">Professionelle SAP-Entwicklung für Ihren Erfolg</p>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-number">01</div>
+                        <h3>Custom Development</h3>
+                        <p>Individuelle ABAP-Entwicklung nach Ihren Anforderungen. Reports, Erweiterungen, Schnittstellen und komplette Eigenentwicklungen.</p>
+                        <ul class="service-list">
+                            <li>ABAP Reports & Programme</li>
+                            <li>User Exits & BADIs</li>
+                            <li>Custom Transactions</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card featured">
+                        <div class="service-number">02</div>
+                        <h3>Fiori App Development</h3>
+                        <p>Moderne Benutzeroberflächen mit SAP Fiori und SAPUI5. Von der Konzeption bis zur Produktivsetzung.</p>
+                        <ul class="service-list">
+                            <li>Custom Fiori Apps</li>
+                            <li>Fiori Elements</li>
+                            <li>SAP Build Apps</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-number">03</div>
+                        <h3>S/4HANA Migration</h3>
+                        <p>Unterstützung bei der Migration zu S/4HANA. Custom Code Analyse, Anpassung und Optimierung.</p>
+                        <ul class="service-list">
+                            <li>Custom Code Check</li>
+                            <li>Code Remediation</li>
+                            <li>Performance Optimierung</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-number">04</div>
+                        <h3>Integration Services</h3>
+                        <p>Nahtlose Integration von SAP mit anderen Systemen. APIs, Schnittstellen und Middleware-Lösungen.</p>
+                        <ul class="service-list">
+                            <li>REST/OData APIs</li>
+                            <li>RFC & IDoc</li>
+                            <li>SAP Integration Suite</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Referenz<span class="highlight">projekte</span></h2>
+                <p class="section-subtitle">Erfolgreiche Projekte aus verschiedenen Branchen</p>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <span class="project-tag">Automotive</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Produktionssteuerung</h3>
+                            <p>Entwicklung einer Fiori App zur Echtzeit-Überwachung der Fertigungslinien mit S/4HANA Integration.</p>
+                            <div class="project-tech">
+                                <span>Fiori</span>
+                                <span>CDS</span>
+                                <span>OData</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <span class="project-tag">Pharma</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Chargen-Management</h3>
+                            <p>Custom ABAP-Lösung für GMP-konforme Chargenverfolgung mit umfangreicher Dokumentation.</p>
+                            <div class="project-tech">
+                                <span>ABAP OO</span>
+                                <span>ALV</span>
+                                <span>Adobe Forms</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <span class="project-tag">Handel</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>E-Commerce Integration</h3>
+                            <p>Bidirektionale Schnittstelle zwischen SAP ERP und Shopify mit Echtzeit-Bestandsabgleich.</p>
+                            <div class="project-tech">
+                                <span>REST API</span>
+                                <span>ABAP</span>
+                                <span>JSON</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="booking">
+            <div class="container">
+                <h2 class="section-title">Jetzt <span class="highlight">Buchen</span></h2>
+                <p class="section-subtitle">Starten Sie Ihr SAP-Projekt mit mir</p>
+
+                <div class="booking-container">
+                    <div class="booking-info">
+                        <h3>Projektanfrage</h3>
+                        <p>Beschreiben Sie Ihr Projekt und ich melde mich innerhalb von 24 Stunden bei Ihnen.</p>
+
+                        <div class="booking-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">&#9993;</span>
+                                <div>
+                                    <strong>E-Mail</strong>
+                                    <p>kontakt@sap-entwickler.de</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">&#9742;</span>
+                                <div>
+                                    <strong>Telefon</strong>
+                                    <p>+49 123 456 7890</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">&#9200;</span>
+                                <div>
+                                    <strong>Verfügbarkeit</strong>
+                                    <p>Mo-Fr: 9:00 - 18:00 Uhr</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rate-info">
+                            <h4>Stundensätze</h4>
+                            <div class="rate-item">
+                                <span>Remote-Entwicklung</span>
+                                <span class="rate">ab 95€/h</span>
+                            </div>
+                            <div class="rate-item">
+                                <span>Vor-Ort-Einsatz</span>
+                                <span class="rate">ab 120€/h</span>
+                            </div>
+                            <div class="rate-item">
+                                <span>Festpreis-Projekt</span>
+                                <span class="rate">auf Anfrage</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="booking-form" class="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Unternehmen</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-Mail *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Gewünschte Leistung *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Bitte wählen...</option>
+                                <option value="abap">ABAP-Entwicklung</option>
+                                <option value="fiori">Fiori/UI5 Development</option>
+                                <option value="s4hana">S/4HANA Migration</option>
+                                <option value="integration">Integration Services</option>
+                                <option value="consulting">Beratung</option>
+                                <option value="other">Sonstiges</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="start-date">Gewünschter Start</label>
+                                <input type="date" id="start-date" name="start-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Geschätzte Dauer</label>
+                                <select id="duration" name="duration">
+                                    <option value="">Bitte wählen...</option>
+                                    <option value="< 1 Woche">&lt; 1 Woche</option>
+                                    <option value="1-4 Wochen">1-4 Wochen</option>
+                                    <option value="1-3 Monate">1-3 Monate</option>
+                                    <option value="> 3 Monate">&gt; 3 Monate</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="budget">Budget-Rahmen</label>
+                            <select id="budget" name="budget">
+                                <option value="">Bitte wählen...</option>
+                                <option value="< 5.000€">&lt; 5.000€</option>
+                                <option value="5.000€ - 15.000€">5.000€ - 15.000€</option>
+                                <option value="15.000€ - 50.000€">15.000€ - 50.000€</option>
+                                <option value="> 50.000€">&gt; 50.000€</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Projektbeschreibung *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Beschreiben Sie Ihr Projekt, Ihre Anforderungen und Ziele..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">Ich habe die Datenschutzerklärung gelesen und akzeptiere sie. *</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            Anfrage senden
+                            <span class="btn-arrow">&#8594;</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">&#9670;</span>
+                        SAP<span class="highlight">Dev</span>
+                    </div>
+                    <p>Professionelle SAP-Entwicklung für Ihren Unternehmenserfolg.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Start</a></li>
+                        <li><a href="#skills">Kompetenzen</a></li>
+                        <li><a href="#services">Leistungen</a></li>
+                        <li><a href="#booking">Buchen</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <p>kontakt@sap-entwickler.de</p>
+                    <p>+49 123 456 7890</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAPDev. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
