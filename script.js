@@ -215,7 +215,9 @@ console.log('%cBereit für Ihr nächstes Projekt!', 'color: #00d4aa; font-size: 
 // 1. Typing Animation for Code Window
 function initTypingAnimation() {
     const codeContent = document.querySelector('.code-content');
-    if (!codeContent) return;
+    if (!codeContent) {
+        return;
+    }
 
     const originalHTML = codeContent.innerHTML;
     const text = codeContent.textContent;
@@ -247,7 +249,9 @@ function initTypingAnimation() {
 // 2. Animated Particles Background
 function initParticles() {
     const hero = document.querySelector('.hero');
-    if (!hero) return;
+    if (!hero) {
+        return;
+    }
 
     const particlesContainer = document.createElement('div');
     particlesContainer.className = 'particles-container';
@@ -350,8 +354,12 @@ function animateCounter(element, target, hasPlus, hasPercent) {
         }
 
         let display = Math.floor(current);
-        if (hasPlus) display += '+';
-        if (hasPercent) display += '%';
+        if (hasPlus) {
+            display += '+';
+        }
+        if (hasPercent) {
+            display += '%';
+        }
 
         element.textContent = display;
     }, stepTime);
@@ -577,14 +585,20 @@ function initGitHubPortfolio() {
     const starsElement = document.getElementById('github-stars');
     const followersElement = document.getElementById('github-followers');
 
-    if (!container) return;
+    if (!container) {
+        return;
+    }
 
     // Fetch user data
     fetch(`https://api.github.com/users/${username}`)
         .then(response => response.json())
         .then(user => {
-            if (reposElement) reposElement.textContent = user.public_repos || 0;
-            if (followersElement) followersElement.textContent = user.followers || 0;
+            if (reposElement) {
+                reposElement.textContent = user.public_repos || 0;
+            }
+            if (followersElement) {
+                followersElement.textContent = user.followers || 0;
+            }
         })
         .catch(err => console.warn('Could not load GitHub user data:', err));
 
@@ -599,7 +613,9 @@ function initGitHubPortfolio() {
 
             // Calculate total stars
             const totalStars = repos.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
-            if (starsElement) starsElement.textContent = totalStars;
+            if (starsElement) {
+                starsElement.textContent = totalStars;
+            }
 
             // Generate repository cards
             container.innerHTML = repos.map(repo => `
@@ -646,7 +662,9 @@ function initEnhancedFormValidation() {
     const form = document.getElementById('booking-form');
     const statusElement = document.getElementById('submit-status');
 
-    if (!form) return;
+    if (!form) {
+        return;
+    }
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();

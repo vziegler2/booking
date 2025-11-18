@@ -203,7 +203,7 @@ async function getAvailability(startDate, endDate) {
     return fetchData(`/availability?start=${startDate}&end=${endDate}`);
 }
 
-// Export for module usage
+// Export for module usage (CommonJS for Jest compatibility)
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         fetchData,
@@ -216,15 +216,3 @@ if (typeof module !== 'undefined' && module.exports) {
         API_CONFIG
     };
 }
-
-// Export for ES modules
-export {
-    fetchData,
-    getProjects,
-    getBlogPosts,
-    getTestimonials,
-    submitContactForm,
-    getAvailability,
-    ApiError,
-    API_CONFIG
-};

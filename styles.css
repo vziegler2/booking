@@ -24,7 +24,7 @@
     --light: #e4e8f0;
     --gray: #9ca3af; /* Updated for WCAG 4.5:1 contrast */
     --gray-dark: #6b7280;
-    --white: #ffffff;
+    --white: #fff;
     --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
 
     /* Accessibility colors */
@@ -1285,7 +1285,7 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1329,7 +1329,7 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .nav-links {
         position: fixed;
         right: -100%;
@@ -1388,7 +1388,7 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     .hero {
         padding: 100px 1rem 60px;
     }
