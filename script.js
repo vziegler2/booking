@@ -5,6 +5,10 @@ const navLinks = document.querySelector('.nav-links');
 burger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
     burger.classList.toggle('active');
+
+    // Toggle aria-expanded for accessibility
+    const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', !isExpanded);
 });
 
 // Close mobile menu when clicking a link
@@ -12,6 +16,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
         burger.classList.remove('active');
+        burger.setAttribute('aria-expanded', 'false');
     });
 });
 

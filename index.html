@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
     <header>
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Hauptnavigation">
             <div class="logo">
-                <span class="logo-icon">&#9670;</span>
+                <span class="logo-icon" aria-hidden="true">&#9670;</span>
                 SAP<span class="highlight">Dev</span>
             </div>
             <ul class="nav-links">
@@ -22,20 +23,20 @@
                 <li><a href="#projects">Projekte</a></li>
                 <li><a href="#booking" class="btn-nav">Jetzt Buchen</a></li>
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
+            <button type="button" class="burger" aria-label="Menü öffnen" aria-expanded="false">
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </button>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-content">
                 <div class="hero-text">
-                    <p class="subtitle">SAP-Entwickler & Berater</p>
+                    <p class="subtitle">SAP-Entwickler &amp; Berater</p>
                     <h1>Ihr Partner für <span class="highlight">SAP-Lösungen</span></h1>
                     <p class="description">
                         Mit über 10 Jahren Erfahrung in der SAP-Entwicklung biete ich Ihnen
@@ -160,8 +161,8 @@
                         <h3>Custom Development</h3>
                         <p>Individuelle ABAP-Entwicklung nach Ihren Anforderungen. Reports, Erweiterungen, Schnittstellen und komplette Eigenentwicklungen.</p>
                         <ul class="service-list">
-                            <li>ABAP Reports & Programme</li>
-                            <li>User Exits & BADIs</li>
+                            <li>ABAP Reports &amp; Programme</li>
+                            <li>User Exits &amp; BADIs</li>
                             <li>Custom Transactions</li>
                         </ul>
                     </div>
@@ -194,7 +195,7 @@
                         <p>Nahtlose Integration von SAP mit anderen Systemen. APIs, Schnittstellen und Middleware-Lösungen.</p>
                         <ul class="service-list">
                             <li>REST/OData APIs</li>
-                            <li>RFC & IDoc</li>
+                            <li>RFC &amp; IDoc</li>
                             <li>SAP Integration Suite</li>
                         </ul>
                     </div>
@@ -430,8 +431,8 @@
             <div class="footer-bottom">
                 <p>&copy; 2024 SAPDev. Alle Rechte vorbehalten.</p>
                 <div class="footer-legal">
-                    <a href="#">Impressum</a>
-                    <a href="#">Datenschutz</a>
+                    <a href="#" onclick="alert('Impressum-Seite in Bearbeitung'); return false;">Impressum</a>
+                    <a href="#" onclick="alert('Datenschutz-Seite in Bearbeitung'); return false;">Datenschutz</a>
                 </div>
             </div>
         </div>
