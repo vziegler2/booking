@@ -1,0 +1,176 @@
+/**
+ * Dark Mode Theme Variables and Overrides
+ */
+
+/* Light theme (default) */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --bg-primary: #0a1628;
+    --bg-secondary: #0f1f35;
+    --bg-tertiary: #162844;
+    --text-primary: #e4e8f0;
+    --text-secondary: #b0b8c4;
+    --text-muted: #6b7280;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Theme Switcher Styles */
+.theme-switcher {
+    position: relative;
+    background: transparent;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    width: 60px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    margin-right: 1rem;
+}
+
+.theme-switcher:hover {
+    border-color: var(--primary);
+}
+
+.theme-icon {
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.theme-switcher .sun {
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+.theme-switcher .moon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.theme-switcher.dark .sun {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.theme-switcher.dark .moon {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+/* Language Switcher Styles */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.lang-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+/* Smooth theme transition */
+body,
+.navbar,
+.hero,
+.skills,
+.services,
+.projects,
+.github-portfolio,
+.booking,
+footer,
+.skill-card,
+.service-card,
+.project-card,
+.github-repo-card,
+.booking-container,
+input,
+select,
+textarea,
+button {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] .code-window {
+    background: #1e293b;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Light mode overrides */
+[data-theme="light"] body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .hero {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .skill-card,
+[data-theme="light"] .service-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .github-repo-card {
+    background: var(--bg-primary);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+[data-theme="light"] .highlight {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,132 @@
+{
+    "nav": {
+        "home": "Home",
+        "skills": "Skills",
+        "services": "Services",
+        "projects": "Projects",
+        "github": "Portfolio",
+        "blog": "Blog",
+        "booking": "Book Now"
+    },
+    "hero": {
+        "subtitle": "SAP Developer & Consultant",
+        "title": "Your Partner for",
+        "titleHighlight": "SAP Solutions",
+        "description": "With over 10 years of experience in SAP development, I offer you customized solutions for ABAP, Fiori, S/4HANA and more.",
+        "cta": "Request Project",
+        "ctaSecondary": "View Services",
+        "stats": {
+            "experience": "Years Experience",
+            "projects": "Projects",
+            "satisfaction": "Client Satisfaction"
+        }
+    },
+    "skills": {
+        "title": "Technical",
+        "titleHighlight": "Skills",
+        "subtitle": "Comprehensive expertise in SAP technologies"
+    },
+    "services": {
+        "title": "My",
+        "titleHighlight": "Services",
+        "subtitle": "Professional SAP development for your success"
+    },
+    "projects": {
+        "title": "Selected",
+        "titleHighlight": "Projects",
+        "subtitle": "Successful implementations"
+    },
+    "github": {
+        "title": "Open Source",
+        "titleHighlight": "Portfolio",
+        "subtitle": "Latest GitHub projects and contributions",
+        "stats": {
+            "repos": "Repositories",
+            "stars": "Stars",
+            "followers": "Followers"
+        },
+        "cta": "View all repositories on GitHub",
+        "noDescription": "No description available"
+    },
+    "booking": {
+        "title": "Book",
+        "titleHighlight": "Now",
+        "subtitle": "Start your SAP project with me",
+        "inquiry": "Project Inquiry",
+        "inquiryText": "Describe your project and I will get back to you within 24 hours.",
+        "contact": {
+            "email": "Email",
+            "phone": "Phone",
+            "availability": "Availability",
+            "availabilityText": "Mon-Fri: 9:00 AM - 6:00 PM"
+        },
+        "rates": {
+            "title": "Hourly Rates",
+            "remote": "Remote Development",
+            "onsite": "On-site Work",
+            "fixed": "Fixed Price Project",
+            "request": "on request"
+        },
+        "payment": {
+            "title": "Payment Methods",
+            "note": "All common payment methods accepted"
+        },
+        "form": {
+            "name": "Name",
+            "company": "Company",
+            "email": "Email",
+            "phone": "Phone",
+            "service": "Desired Service",
+            "servicePlaceholder": "Please select...",
+            "startDate": "Desired Start",
+            "duration": "Estimated Duration",
+            "budget": "Budget Range",
+            "message": "Project Description",
+            "messagePlaceholder": "Describe your project, requirements and goals...",
+            "privacy": "I have read and accept the privacy policy.",
+            "submit": "Send Request",
+            "success": "Thank you! Your request has been sent successfully. We will contact you within 24 hours.",
+            "error": "There was an error sending. Please try again or contact us directly."
+        },
+        "calendar": {
+            "text": "Or book an appointment directly:",
+            "google": "Google Calendar",
+            "outlook": "Outlook"
+        }
+    },
+    "blog": {
+        "title": "SAP",
+        "titleHighlight": "Blog",
+        "subtitle": "Tips, tutorials and best practices",
+        "readMore": "Read more",
+        "backToList": "Back to overview"
+    },
+    "footer": {
+        "description": "Professional SAP development for your business success.",
+        "quickLinks": "Quick Links",
+        "contact": "Contact",
+        "legal": {
+            "copyright": "All rights reserved.",
+            "imprint": "Imprint",
+            "privacy": "Privacy"
+        }
+    },
+    "chatbot": {
+        "title": "FAQ Assistant",
+        "placeholder": "Ask a question...",
+        "send": "Send",
+        "greeting": "Hello! How can I help you? You can ask me about my services, prices or availability."
+    },
+    "theme": {
+        "light": "Light",
+        "dark": "Dark"
+    },
+    "newsletter": {
+        "title": "Newsletter",
+        "subtitle": "Stay informed about SAP news and tips",
+        "placeholder": "Your email address",
+        "subscribe": "Subscribe",
+        "success": "Thank you! Please confirm your subscription via email.",
+        "error": "Subscription failed. Please try again."
+    }
+}

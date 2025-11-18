@@ -1,0 +1,120 @@
+name: SEO & Sitemap Generator
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - '**.html'
+      - '**.md'
+      - 'blog/**'
+  schedule:
+    # Run weekly on Sundays at midnight
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-sitemap:
+    name: Generate Sitemap
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate sitemap
+        run: |
+          cat > sitemap.xml << 'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+              <url>
+                  <loc>https://vziegler2.github.io/claude_code2/</loc>
+                  <lastmod>$(date -I)</lastmod>
+                  <changefreq>weekly</changefreq>
+                  <priority>1.0</priority>
+              </url>
+              <url>
+                  <loc>https://vziegler2.github.io/claude_code2/#skills</loc>
+                  <lastmod>$(date -I)</lastmod>
+                  <changefreq>monthly</changefreq>
+                  <priority>0.8</priority>
+              </url>
+              <url>
+                  <loc>https://vziegler2.github.io/claude_code2/#services</loc>
+                  <lastmod>$(date -I)</lastmod>
+                  <changefreq>monthly</changefreq>
+                  <priority>0.8</priority>
+              </url>
+              <url>
+                  <loc>https://vziegler2.github.io/claude_code2/#projects</loc>
+                  <lastmod>$(date -I)</lastmod>
+                  <changefreq>monthly</changefreq>
+                  <priority>0.7</priority>
+              </url>
+              <url>
+                  <loc>https://vziegler2.github.io/claude_code2/#github</loc>
+                  <lastmod>$(date -I)</lastmod>
+                  <changefreq>weekly</changefreq>
+                  <priority>0.7</priority>
+              </url>
+              <url>
+                  <loc>https://vziegler2.github.io/claude_code2/#booking</loc>
+                  <lastmod>$(date -I)</lastmod>
+                  <changefreq>weekly</changefreq>
+                  <priority>0.9</priority>
+              </url>
+          EOF
+
+          # Add blog posts to sitemap
+          for file in blog/*.md; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file" .md)
+              echo "    <url>" >> sitemap.xml
+              echo "        <loc>https://vziegler2.github.io/claude_code2/blog/$filename</loc>" >> sitemap.xml
+              echo "        <lastmod>$(date -I)</lastmod>" >> sitemap.xml
+              echo "        <changefreq>monthly</changefreq>" >> sitemap.xml
+              echo "        <priority>0.6</priority>" >> sitemap.xml
+              echo "    </url>" >> sitemap.xml
+            fi
+          done
+
+          echo "</urlset>" >> sitemap.xml
+
+      - name: Update robots.txt
+        run: |
+          cat > robots.txt << 'EOF'
+          # Robots.txt for SAP Developer Booking Website
+          # Generated: $(date -I)
+
+          User-agent: *
+          Allow: /
+
+          # Sitemap location
+          Sitemap: https://vziegler2.github.io/claude_code2/sitemap.xml
+
+          # Crawl delay
+          Crawl-delay: 1
+
+          # Disallow development files
+          Disallow: /node_modules/
+          Disallow: /.git/
+          Disallow: /.github/
+          Disallow: /tests/
+          Disallow: /coverage/
+          Disallow: /*.json$
+          Disallow: /*.config.js$
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add sitemap.xml robots.txt
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update sitemap and robots.txt [skip ci]"
+          git push

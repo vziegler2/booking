@@ -1,0 +1,38 @@
+# Prometheus Configuration for SAP Developer Website
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'sap-developer-website'
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+rule_files: []
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Node Exporter (if running)
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # Nginx metrics
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['web:80']
+    metrics_path: /health
+    scheme: http
+
+  # Custom application metrics
+  - job_name: 'webapp'
+    static_configs:
+      - targets: ['web:80']
+    metrics_path: /metrics
+    scheme: http

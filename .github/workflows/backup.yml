@@ -1,0 +1,86 @@
+name: Backup & Archive
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    name: Create Backup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create backup archive
+        run: |
+          # Create backup directory
+          mkdir -p backups
+
+          # Create timestamp
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
+          # Create archive excluding node_modules and other temp files
+          tar -czf "backups/backup_${TIMESTAMP}.tar.gz" \
+            --exclude='node_modules' \
+            --exclude='coverage' \
+            --exclude='playwright-report' \
+            --exclude='.git' \
+            --exclude='backups' \
+            .
+
+          # Keep only last 7 backups
+          cd backups
+          ls -t *.tar.gz | tail -n +8 | xargs -r rm
+
+      - name: Upload backup as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backup-${{ github.run_number }}
+          path: backups/
+          retention-days: 30
+
+      - name: Create release for monthly backup
+        if: github.event.schedule == '0 2 1 * *'
+        run: |
+          TIMESTAMP=$(date +%Y%m%d)
+          gh release create "backup-${TIMESTAMP}" \
+            --title "Monthly Backup ${TIMESTAMP}" \
+            --notes "Automated monthly backup" \
+            backups/*.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  database-backup:
+    name: Export Data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Export configuration
+        run: |
+          # Export all configuration files
+          mkdir -p exports
+
+          # Create JSON export of important configs
+          echo '{
+            "timestamp": "'$(date -Iseconds)'",
+            "repository": "'${{ github.repository }}'",
+            "branch": "'${{ github.ref_name }}'",
+            "commit": "'${{ github.sha }}'"
+          }' > exports/metadata.json
+
+      - name: Upload exports
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-export-${{ github.run_number }}
+          path: exports/
+          retention-days: 90

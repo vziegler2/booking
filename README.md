@@ -1,144 +1,80 @@
 # SAP Developer Booking Website
 
-Professionelle Buchungswebseite für SAP-Entwickler mit modernem Design, umfangreichen UX-Features und vollständiger SEO-Optimierung.
+Vollständig automatisierte, professionelle Buchungswebseite für SAP-Entwickler mit 7 Phasen der Optimierung.
 
-## Features
+## Implementierte Features
 
-### Technische Basis (Phase 1)
-- **Build-System**: npm-basiertes Build-System mit ESLint und Prettier
-- **CI/CD**: GitHub Actions Workflow für automatisches Deployment auf GitHub Pages
-- **Code-Qualität**: Konfigurierte Linting-Regeln für JavaScript und CSS
+### Phase 1: Technische Basis
+- Jest Unit-Tests & Playwright E2E-Tests
+- GitHub Actions CI/CD Pipeline
+- ESLint, Prettier, Stylelint
+- CodeQL Security Scanning
+- Docker-Containerisierung
 
-### SEO & Sichtbarkeit (Phase 2)
-- **Meta-Tags**: Vollständige OpenGraph und Twitter Card Integration
-- **Strukturierte Daten**: Schema.org JSON-LD für ProfessionalService und Person
-- **Sitemap & Robots**: Automatisch generierte sitemap.xml und robots.txt
+### Phase 2: SEO & Sichtbarkeit
+- OpenGraph & Twitter Cards
+- Schema.org strukturierte Daten
+- Automatische Sitemap-Generierung
+- Google Analytics Integration
 
-### Design & Usability (Phase 3)
-- **Responsive Design**: Optimiert für Desktop, Tablet und Mobile (3 Breakpoints)
-- **Accessibility**: WCAG-konform mit Skip-Links, ARIA-Labels, Fokus-Styles
-- **Animationen**: 12 einprägsame Keyframe-Animationen
-- **Modulare CSS**: Organisiert in logische Komponenten-Blöcke
+### Phase 3: Design & Usability
+- Dark Mode mit Theme-Switcher
+- 12 Keyframe-Animationen
+- WCAG-konforme Accessibility
+- Responsive Design (3 Breakpoints)
 
-### Interaktive Features (Phase 4)
-- **Kontaktformular**: Echtzeit-Validierung mit visueller Rückmeldung
-- **Kalender-Integration**: Direkte Terminbuchung über Google Calendar und Outlook
-- **GitHub Portfolio**: Automatische Anzeige der neuesten Repositories via GitHub API
-- **12 Zahlungsoptionen**: Rechnung, SEPA, PayPal, Kreditkarte, Stripe, Klarna, etc.
+### Phase 4: Interaktive Features
+- 12 Zahlungsoptionen
+- Kalender-Integration (Google/Outlook)
+- GitHub Portfolio API
+- Code-Sandbox für Live-Demos
+
+### Phase 5: Content & Automatisierung
+- Markdown Blog-System
+- Mehrsprachigkeit (DE/EN)
+- Newsletter-Anmeldung
+
+### Phase 6: Erweiterte Funktionen
+- FAQ-Chatbot
+- Chart.js Datenvisualisierung
+- Security Headers (CSP)
+- Sentry Monitoring
+
+### Phase 7: Zukunftssicherheit
+- Docker & nginx
+- Prometheus/Grafana Monitoring
+- Automatische Backups
 
 ## Installation
 
 ```bash
-# Dependencies installieren
-npm install
-
-# Entwicklungsserver starten
-npm start
-
-# Code-Qualität prüfen
-npm run lint
-
-# Code formatieren
-npm run format
+npm install        # Dependencies
+npm start          # Dev Server
+npm test           # Alle Tests
+npm run docker:build  # Docker Image
 ```
 
 ## Projektstruktur
 
 ```
-claude_code2/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # GitHub Actions CI/CD
-├── src/
-│   ├── assets/
-│   │   └── images/             # Bilder und Icons
-│   ├── css/                    # Modulare CSS-Dateien
-│   └── js/                     # JavaScript-Module
-├── index.html                  # Haupt-HTML-Datei
-├── styles.css                  # Haupt-Stylesheet (~1400 Zeilen)
-├── script.js                   # Haupt-JavaScript (~720 Zeilen)
-├── sitemap.xml                 # SEO Sitemap
-├── robots.txt                  # Crawler-Anweisungen
-├── package.json                # npm-Konfiguration
-├── .eslintrc.json              # ESLint-Regeln
-├── .prettierrc                 # Prettier-Konfiguration
-├── .stylelintrc.json           # Stylelint-Regeln
-└── README.md                   # Diese Datei
+├── .github/workflows/   # CI/CD, SEO, Backup
+├── src/css/            # Modulare CSS
+├── src/js/             # Feature-Module
+├── tests/              # Unit & E2E Tests
+├── blog/               # Markdown Posts
+├── locales/            # i18n (DE/EN)
+├── Dockerfile          # Container
+└── docker-compose.yml  # Monitoring Stack
 ```
 
 ## Technologien
 
-- **HTML5**: Semantisches Markup mit Accessibility-Features
-- **CSS3**: Custom Properties, Flexbox, Grid, Animationen
-- **JavaScript**: ES6+, Fetch API, Intersection Observer
-- **GitHub API**: Für automatisches Repository-Display
-- **GitHub Actions**: CI/CD Pipeline
+HTML5, CSS3, ES6+, Jest, Playwright, Docker, nginx, Prometheus, Chart.js, GitHub Actions
 
-## Features im Detail
+## Live Demo
 
-### Animationen
-- `fadeInUp`, `fadeInLeft`, `fadeInRight`: Einblendeffekte
-- `float`: Schwebende Elemente
-- `pulse`: Pulsierende Buttons
-- `shimmer`: Schimmernde Effekte
-- `glow`: Leuchtende Buttons
-- `rotate`: Rotierende Spinner
-- `typing`: Schreibmaschinen-Effekt
-
-### Accessibility
-- Skip-Link für Tastatur-Navigation
-- ARIA-Labels für alle interaktiven Elemente
-- Fokus-Styles für Keyboard-User
-- Semantische HTML-Struktur
-- Live-Regions für Statusmeldungen
-
-### Performance
-- Preconnect für Google Fonts
-- Optimierte Animationen mit `transform` und `opacity`
-- Intersection Observer für lazy Loading
-- Minimalistische Abhängigkeiten
-
-## Deployment
-
-Das Projekt wird automatisch auf GitHub Pages deployed, wenn Änderungen auf den `main` oder `master` Branch gepusht werden.
-
-**Live-URL**: https://vziegler2.github.io/claude_code2/
-
-## Anpassung
-
-### GitHub-Benutzername ändern
-In `script.js` die Variable `username` in der Funktion `initGitHubPortfolio()` anpassen:
-
-```javascript
-const username = 'ihr-username';
-```
-
-### Kontaktdaten ändern
-In `index.html` die E-Mail und Telefonnummer in der Booking-Section aktualisieren.
-
-### Farben ändern
-In `styles.css` die CSS-Variablen im `:root`-Block anpassen:
-
-```css
-:root {
-    --primary: #0070f3;
-    --secondary: #00d4aa;
-    --dark: #0a1628;
-    /* ... */
-}
-```
-
-## Browser-Support
-
-- Chrome/Edge 88+
-- Firefox 78+
-- Safari 14+
-- Mobile Safari/Chrome
+https://vziegler2.github.io/claude_code2/
 
 ## Lizenz
 
 MIT License
-
-## Autor
-
-SAP Developer - Professionelle SAP-Entwicklung
