@@ -46,8 +46,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Preload critical resources for LCP -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" crossorigin>
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/css/wcag-compliance.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Schema.org Structured Data -->
@@ -130,6 +135,13 @@
     </script>
 </head>
 <body>
+    <!-- Fallback for users with JavaScript disabled -->
+    <noscript>
+        <div style="background: #f87171; color: #fff; padding: 1rem; text-align: center;">
+            Diese Seite benötigt JavaScript für volle Funktionalität. Bitte aktivieren Sie JavaScript in Ihrem Browser.
+        </div>
+    </noscript>
+
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
     <header>
         <nav class="navbar" aria-label="Hauptnavigation">
@@ -214,56 +226,56 @@
 
                 <div class="skills-grid">
                     <div class="skill-card">
-                        <div class="skill-icon">&#60;/&#62;</div>
+                        <div class="skill-icon" aria-hidden="true">&#60;/&#62;</div>
                         <h3>ABAP/4</h3>
                         <p>Klassisches und modernes ABAP, OO-ABAP, CDS Views, AMDP</p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                        <div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="ABAP/4 Expertise: 95%">
+                            <div class="skill-progress skill-progress-95"></div>
                         </div>
                     </div>
 
                     <div class="skill-card">
-                        <div class="skill-icon">&#9881;</div>
+                        <div class="skill-icon" aria-hidden="true">&#9881;</div>
                         <h3>SAP Fiori/UI5</h3>
                         <p>Moderne Benutzeroberflächen, Fiori Elements, Custom Apps</p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
+                        <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="SAP Fiori/UI5 Expertise: 90%">
+                            <div class="skill-progress skill-progress-90"></div>
                         </div>
                     </div>
 
                     <div class="skill-card">
-                        <div class="skill-icon">&#9729;</div>
+                        <div class="skill-icon" aria-hidden="true">&#9729;</div>
                         <h3>S/4HANA</h3>
                         <p>Migration, Implementierung, Custom Code Adaptation</p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 88%"></div>
+                        <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="S/4HANA Expertise: 88%">
+                            <div class="skill-progress skill-progress-88"></div>
                         </div>
                     </div>
 
                     <div class="skill-card">
-                        <div class="skill-icon">&#8644;</div>
+                        <div class="skill-icon" aria-hidden="true">&#8644;</div>
                         <h3>SAP Integration</h3>
                         <p>RFC, BAPI, IDoc, OData, REST APIs, SAP PI/PO</p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 92%"></div>
+                        <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="SAP Integration Expertise: 92%">
+                            <div class="skill-progress skill-progress-92"></div>
                         </div>
                     </div>
 
                     <div class="skill-card">
-                        <div class="skill-icon">&#9776;</div>
+                        <div class="skill-icon" aria-hidden="true">&#9776;</div>
                         <h3>SAP BTP</h3>
                         <p>Cloud Foundry, Kyma, SAP CAP, Extension Suite</p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
+                        <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="SAP BTP Expertise: 85%">
+                            <div class="skill-progress skill-progress-85"></div>
                         </div>
                     </div>
 
                     <div class="skill-card">
-                        <div class="skill-icon">&#128202;</div>
+                        <div class="skill-icon" aria-hidden="true">&#128202;</div>
                         <h3>Reporting</h3>
                         <p>ALV, Adobe Forms, SAPscript, BIRT, Crystal Reports</p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 93%"></div>
+                        <div class="skill-bar" role="progressbar" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" aria-label="Reporting Expertise: 93%">
+                            <div class="skill-progress skill-progress-93"></div>
                         </div>
                     </div>
                 </div>
@@ -391,7 +403,7 @@
                 <h2 class="section-title">Open Source <span class="highlight">Portfolio</span></h2>
                 <p class="section-subtitle">Aktuelle GitHub Projekte und Beiträge</p>
 
-                <div class="github-stats" aria-label="GitHub Statistiken">
+                <div class="github-stats" role="region" aria-label="GitHub Statistiken">
                     <div class="github-stat">
                         <span class="stat-value" id="github-repos">0</span>
                         <span class="stat-label">Repositories</span>
@@ -406,7 +418,7 @@
                     </div>
                 </div>
 
-                <div class="github-repos-grid" id="github-repos-container" aria-label="GitHub Repositories">
+                <div class="github-repos-grid" id="github-repos-container" role="region" aria-label="GitHub Repositories">
                     <div class="loading-placeholder">
                         <span class="loading-spinner" aria-hidden="true"></span>
                         <span>Lade Repositories...</span>
@@ -536,29 +548,29 @@
                     <form id="booking-form" class="booking-form">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" id="name" name="name" required>
+                                <label for="name">Name <span aria-hidden="true">*</span><span class="sr-only">(Pflichtfeld)</span></label>
+                                <input type="text" id="name" name="name" required aria-required="true" autocomplete="name">
                             </div>
                             <div class="form-group">
                                 <label for="company">Unternehmen</label>
-                                <input type="text" id="company" name="company">
+                                <input type="text" id="company" name="company" autocomplete="organization">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="email">E-Mail *</label>
-                                <input type="email" id="email" name="email" required>
+                                <label for="email">E-Mail <span aria-hidden="true">*</span><span class="sr-only">(Pflichtfeld)</span></label>
+                                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
                             </div>
                             <div class="form-group">
                                 <label for="phone">Telefon</label>
-                                <input type="tel" id="phone" name="phone">
+                                <input type="tel" id="phone" name="phone" autocomplete="tel">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="service">Gewünschte Leistung *</label>
-                            <select id="service" name="service" required>
+                            <label for="service">Gewünschte Leistung <span aria-hidden="true">*</span><span class="sr-only">(Pflichtfeld)</span></label>
+                            <select id="service" name="service" required aria-required="true">
                                 <option value="">Bitte wählen...</option>
                                 <option value="abap">ABAP-Entwicklung</option>
                                 <option value="fiori">Fiori/UI5 Development</option>
@@ -598,13 +610,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Projektbeschreibung *</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Beschreiben Sie Ihr Projekt, Ihre Anforderungen und Ziele..."></textarea>
+                            <label for="message">Projektbeschreibung <span aria-hidden="true">*</span><span class="sr-only">(Pflichtfeld)</span></label>
+                            <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Beschreiben Sie Ihr Projekt, Ihre Anforderungen und Ziele..."></textarea>
                         </div>
 
                         <div class="form-group checkbox-group">
-                            <input type="checkbox" id="privacy" name="privacy" required aria-describedby="privacy-error">
-                            <label for="privacy">Ich habe die Datenschutzerklärung gelesen und akzeptiere sie. *</label>
+                            <input type="checkbox" id="privacy" name="privacy" required aria-required="true" aria-describedby="privacy-error">
+                            <label for="privacy">Ich habe die Datenschutzerklärung gelesen und akzeptiere sie. <span aria-hidden="true">*</span><span class="sr-only">(Pflichtfeld)</span></label>
                             <span id="privacy-error" class="error-message" role="alert" aria-live="polite"></span>
                         </div>
 
@@ -650,18 +662,18 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">
-                        <span class="logo-icon">&#9670;</span>
+                        <span class="logo-icon" aria-hidden="true">&#9670;</span>
                         SAP<span class="highlight">Dev</span>
                     </div>
                     <p>Professionelle SAP-Entwicklung für Ihren Unternehmenserfolg.</p>
                 </div>
 
-                <div class="footer-links">
+                <nav class="footer-links" aria-label="Footer Navigation">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Start</a></li>
@@ -669,20 +681,20 @@
                         <li><a href="#services">Leistungen</a></li>
                         <li><a href="#booking">Buchen</a></li>
                     </ul>
-                </div>
+                </nav>
 
-                <div class="footer-contact">
+                <address class="footer-contact">
                     <h4>Kontakt</h4>
-                    <p>kontakt@sap-entwickler.de</p>
-                    <p>+49 123 456 7890</p>
-                </div>
+                    <p><a href="mailto:kontakt@sap-entwickler.de">kontakt@sap-entwickler.de</a></p>
+                    <p><a href="tel:+491234567890">+49 123 456 7890</a></p>
+                </address>
             </div>
 
             <div class="footer-bottom">
                 <p>&copy; 2024 SAPDev. Alle Rechte vorbehalten.</p>
                 <div class="footer-legal">
-                    <a href="#" onclick="alert('Impressum-Seite in Bearbeitung'); return false;">Impressum</a>
-                    <a href="#" onclick="alert('Datenschutz-Seite in Bearbeitung'); return false;">Datenschutz</a>
+                    <a href="#impressum" id="impressum-link">Impressum</a>
+                    <a href="#datenschutz" id="datenschutz-link">Datenschutz</a>
                 </div>
             </div>
         </div>
@@ -696,16 +708,16 @@
     <link rel="stylesheet" href="src/css/sandbox.css">
 
     <!-- Core Script -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
     <!-- Additional Modules -->
-    <script src="src/js/theme.js"></script>
-    <script src="src/js/i18n.js"></script>
-    <script src="src/js/chatbot.js"></script>
-    <script src="src/js/blog.js"></script>
-    <script src="src/js/newsletter.js"></script>
-    <script src="src/js/analytics.js"></script>
-    <script src="src/js/charts.js"></script>
-    <script src="src/js/sandbox.js"></script>
+    <script src="src/js/theme.js" defer></script>
+    <script src="src/js/i18n.js" defer></script>
+    <script src="src/js/chatbot.js" defer></script>
+    <script src="src/js/blog.js" defer></script>
+    <script src="src/js/newsletter.js" defer></script>
+    <script src="src/js/analytics.js" defer></script>
+    <script src="src/js/charts.js" defer></script>
+    <script src="src/js/sandbox.js" defer></script>
 </body>
 </html>

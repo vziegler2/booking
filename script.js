@@ -136,7 +136,9 @@ const skillsObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const skillBars = entry.target.querySelectorAll('.skill-progress');
             skillBars.forEach(bar => {
-                const width = bar.style.width;
+                // Get width from CSS class
+                const computedStyle = window.getComputedStyle(bar);
+                const width = computedStyle.width;
                 bar.style.width = '0';
                 setTimeout(() => {
                     bar.style.transition = 'width 1s ease-out';
@@ -704,6 +706,26 @@ function validateField(field) {
     return isValid;
 }
 
+// Legal Links Event Handlers
+function initLegalLinks() {
+    const impressumLink = document.getElementById('impressum-link');
+    const datenschutzLink = document.getElementById('datenschutz-link');
+
+    if (impressumLink) {
+        impressumLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Impressum-Seite in Bearbeitung');
+        });
+    }
+
+    if (datenschutzLink) {
+        datenschutzLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Datenschutz-Seite in Bearbeitung');
+        });
+    }
+}
+
 // Initialize all UX features
 document.addEventListener('DOMContentLoaded', () => {
     initTypingAnimation();
@@ -717,4 +739,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initPaymentMethods();
     initGitHubPortfolio();
     initEnhancedFormValidation();
+    initLegalLinks();
 });

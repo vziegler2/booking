@@ -8,14 +8,30 @@
 :root {
     --primary: #0070f3;
     --primary-dark: #0051a8;
+    --primary-light: #3b9eff;
     --secondary: #00d4aa;
+    --secondary-dark: #00a88a;
     --dark: #0a1628;
     --darker: #050d1a;
     --light: #e4e8f0;
-    --gray: #6b7280;
+    --gray: #9ca3af; /* Updated for WCAG 4.5:1 contrast */
+    --gray-dark: #6b7280;
     --white: #ffffff;
     --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+
+    /* Accessibility colors */
+    --focus-color: #fbbf24;
+    --error: #f87171;
+    --success: #4ade80;
 }
+
+/* Skill progress bar widths - replaces inline styles */
+.skill-progress-95 { width: 95%; }
+.skill-progress-93 { width: 93%; }
+.skill-progress-92 { width: 92%; }
+.skill-progress-90 { width: 90%; }
+.skill-progress-88 { width: 88%; }
+.skill-progress-85 { width: 85%; }
 
 /* ===== EINPRÄGSAME ANIMATIONEN ===== */
 
@@ -867,7 +883,7 @@ header {
     color: var(--light);
     font-size: 1rem;
     font-family: inherit;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .form-group input:focus,
@@ -1023,13 +1039,6 @@ footer {
     font-size: 1.1rem;
     display: block;
     margin-bottom: 0.5rem;
-}
-
-/* Form input transitions */
-.form-group input,
-.form-group select,
-.form-group textarea {
-    transition: all 0.3s ease;
 }
 
 .form-group.focused label {
