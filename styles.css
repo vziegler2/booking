@@ -462,9 +462,6 @@ header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-}
-
-.skills-grid {
     perspective: 1000px;
 }
 
@@ -654,13 +651,10 @@ header {
 }
 
 .project-image {
-    transition: transform 0.5s ease;
-}
-
-.project-image {
     height: 200px;
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     position: relative;
+    transition: transform 0.5s ease;
 }
 
 .project-overlay {
