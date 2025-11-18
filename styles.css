@@ -1036,6 +1036,237 @@ footer {
     color: var(--primary);
 }
 
+/* ===== GITHUB PORTFOLIO SECTION ===== */
+.github-portfolio {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+}
+
+.github-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.github-stat {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.github-stat .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.github-stat .stat-label {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.github-repos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.github-repo-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.github-repo-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0, 112, 243, 0.2);
+}
+
+.github-repo-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.github-repo-card h4 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.github-repo-card h4 a:hover {
+    color: var(--primary);
+}
+
+.github-repo-card p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.repo-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.repo-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.repo-language {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.loading-placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.github-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.github-icon {
+    margin-right: 0.5rem;
+}
+
+/* ===== CALENDAR BOOKING ===== */
+.calendar-booking {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.calendar-booking p {
+    margin-bottom: 1rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.calendar-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-calendar {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-google {
+    background: rgba(66, 133, 244, 0.2);
+    border: 1px solid rgba(66, 133, 244, 0.5);
+    color: #4285f4;
+}
+
+.btn-google:hover {
+    background: rgba(66, 133, 244, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-outlook {
+    background: rgba(0, 120, 212, 0.2);
+    border: 1px solid rgba(0, 120, 212, 0.5);
+    color: #0078d4;
+}
+
+.btn-outlook:hover {
+    background: rgba(0, 120, 212, 0.3);
+    transform: translateY(-2px);
+}
+
+.calendar-icon {
+    font-size: 1.1rem;
+}
+
+/* ===== FORM ENHANCEMENTS ===== */
+.error-message {
+    display: block;
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.submit-status {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    display: none;
+}
+
+.submit-status.success {
+    display: block;
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.submit-status.error {
+    display: block;
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.recaptcha-notice {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.recaptcha-notice small {
+    color: var(--gray);
+    font-size: 0.75rem;
+}
+
+.recaptcha-notice a {
+    color: var(--primary);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero-content {
@@ -1070,6 +1301,14 @@ footer {
 
     .booking-container {
         grid-template-columns: 1fr;
+    }
+
+    .github-repos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .github-stats {
+        gap: 1.5rem;
     }
 }
 
@@ -1157,5 +1396,22 @@ footer {
 
     .payment-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .github-repos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .github-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .calendar-buttons {
+        flex-direction: column;
+    }
+
+    .btn-calendar {
+        justify-content: center;
     }
 }

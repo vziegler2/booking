@@ -554,6 +554,156 @@ function initPaymentMethods() {
     }
 }
 
+// GitHub Portfolio Integration
+function initGitHubPortfolio() {
+    const username = 'vziegler2';
+    const container = document.getElementById('github-repos-container');
+    const reposElement = document.getElementById('github-repos');
+    const starsElement = document.getElementById('github-stars');
+    const followersElement = document.getElementById('github-followers');
+
+    if (!container) return;
+
+    // Fetch user data
+    fetch(`https://api.github.com/users/${username}`)
+        .then(response => response.json())
+        .then(user => {
+            if (reposElement) reposElement.textContent = user.public_repos || 0;
+            if (followersElement) followersElement.textContent = user.followers || 0;
+        })
+        .catch(err => console.warn('Could not load GitHub user data:', err));
+
+    // Fetch repositories
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
+        .then(response => response.json())
+        .then(repos => {
+            if (!Array.isArray(repos)) {
+                container.innerHTML = '<p>GitHub Repositories konnten nicht geladen werden.</p>';
+                return;
+            }
+
+            // Calculate total stars
+            const totalStars = repos.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
+            if (starsElement) starsElement.textContent = totalStars;
+
+            // Generate repository cards
+            container.innerHTML = repos.map(repo => `
+                <div class="github-repo-card">
+                    <h4><a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a></h4>
+                    <p>${repo.description || 'Keine Beschreibung verfügbar'}</p>
+                    <div class="repo-meta">
+                        ${repo.language ? `<span><span class="repo-language" style="background: ${getLanguageColor(repo.language)}"></span>${repo.language}</span>` : ''}
+                        <span>&#9733; ${repo.stargazers_count}</span>
+                        <span>&#128279; ${repo.forks_count}</span>
+                    </div>
+                </div>
+            `).join('');
+        })
+        .catch(err => {
+            console.warn('Could not load GitHub repos:', err);
+            container.innerHTML = '<p>GitHub Repositories konnten nicht geladen werden.</p>';
+        });
+}
+
+// Language colors for GitHub
+function getLanguageColor(language) {
+    const colors = {
+        'JavaScript': '#f1e05a',
+        'TypeScript': '#2b7489',
+        'Python': '#3572A5',
+        'Java': '#b07219',
+        'HTML': '#e34c26',
+        'CSS': '#563d7c',
+        'ABAP': '#E8274B',
+        'Ruby': '#701516',
+        'Go': '#00ADD8',
+        'Rust': '#dea584',
+        'PHP': '#4F5D95',
+        'C#': '#239120',
+        'C++': '#f34b7d',
+        'Shell': '#89e051'
+    };
+    return colors[language] || '#6b7280';
+}
+
+// Enhanced Form Validation with Status Feedback
+function initEnhancedFormValidation() {
+    const form = document.getElementById('booking-form');
+    const statusElement = document.getElementById('submit-status');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('.btn-submit');
+        const originalText = submitBtn.innerHTML;
+
+        // Show loading state
+        submitBtn.innerHTML = '<span class="loading-spinner" style="width: 20px; height: 20px; border-width: 2px; margin-right: 8px;"></span> Sende...';
+        submitBtn.disabled = true;
+
+        // Simulate form submission (replace with actual endpoint)
+        try {
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Show success message
+            if (statusElement) {
+                statusElement.textContent = 'Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen.';
+                statusElement.className = 'submit-status success';
+            }
+
+            // Reset form
+            form.reset();
+
+            // Clear payment selection
+            const selectedPayment = form.querySelector('.payment-option.selected');
+            if (selectedPayment) {
+                selectedPayment.classList.remove('selected');
+            }
+
+        } catch (error) {
+            // Show error message
+            if (statusElement) {
+                statusElement.textContent = 'Es gab einen Fehler beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.';
+                statusElement.className = 'submit-status error';
+            }
+        } finally {
+            // Restore button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+
+    // Real-time validation feedback
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+        field.addEventListener('blur', () => {
+            validateField(field);
+        });
+
+        field.addEventListener('input', () => {
+            if (field.classList.contains('invalid')) {
+                validateField(field);
+            }
+        });
+    });
+}
+
+function validateField(field) {
+    const isValid = field.checkValidity();
+
+    if (isValid) {
+        field.classList.remove('invalid');
+        field.classList.add('valid');
+    } else {
+        field.classList.remove('valid');
+        field.classList.add('invalid');
+    }
+
+    return isValid;
+}
+
 // Initialize all UX features
 document.addEventListener('DOMContentLoaded', () => {
     initTypingAnimation();
@@ -565,4 +715,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // initCursorTrail(); // Uncomment for cursor trail effect
     initSectionReveal();
     initPaymentMethods();
+    initGitHubPortfolio();
+    initEnhancedFormValidation();
 });

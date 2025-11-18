@@ -1,0 +1,19 @@
+# Robots.txt for SAP Developer Booking Website
+# https://vziegler2.github.io/claude_code2/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://vziegler2.github.io/claude_code2/sitemap.xml
+
+# Crawl delay (optional, be nice to crawlers)
+Crawl-delay: 1
+
+# Disallow development files
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /*.md$

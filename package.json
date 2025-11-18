@@ -1,0 +1,43 @@
+{
+  "name": "sap-developer-booking",
+  "version": "1.0.0",
+  "description": "Professional SAP Developer Booking Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "lint": "npx eslint src/**/*.js *.js --fix",
+    "lint:css": "npx stylelint '**/*.css' --fix",
+    "format": "npx prettier --write '**/*.{js,css,html,json,md}'",
+    "validate": "npx html-validate index.html",
+    "test": "npm run lint && npm run format:check",
+    "format:check": "npx prettier --check '**/*.{js,css,html,json,md}'",
+    "build": "npm run lint && npm run format",
+    "prepare": "echo 'Project ready for deployment'"
+  },
+  "keywords": [
+    "sap",
+    "developer",
+    "booking",
+    "freelance",
+    "abap",
+    "fiori"
+  ],
+  "author": "SAP Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0",
+    "html-validate": "^8.18.0",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vziegler2/claude_code2.git"
+  },
+  "homepage": "https://vziegler2.github.io/claude_code2"
+}
