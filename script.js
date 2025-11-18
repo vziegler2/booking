@@ -498,6 +498,62 @@ function initSectionReveal() {
     });
 }
 
+// 9. Payment Method Selection
+function initPaymentMethods() {
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    let selectedPayment = null;
+
+    paymentOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove selected from all
+            paymentOptions.forEach(opt => opt.classList.remove('selected'));
+
+            // Add selected to clicked
+            option.classList.add('selected');
+            selectedPayment = option.dataset.method;
+
+            // Add animation
+            option.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                option.style.transform = 'translateY(-2px)';
+            }, 100);
+
+            console.log('Selected payment method:', selectedPayment);
+        });
+
+        // Add hover sound effect simulation via animation
+        option.addEventListener('mouseenter', () => {
+            option.style.transform = 'translateY(-3px) scale(1.05)';
+        });
+
+        option.addEventListener('mouseleave', () => {
+            if (!option.classList.contains('selected')) {
+                option.style.transform = '';
+            } else {
+                option.style.transform = 'translateY(-2px)';
+            }
+        });
+    });
+
+    // Store selected payment in form data
+    const form = document.getElementById('booking-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            if (selectedPayment) {
+                // Add hidden input for payment method
+                let input = form.querySelector('input[name="payment-method"]');
+                if (!input) {
+                    input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'payment-method';
+                    form.appendChild(input);
+                }
+                input.value = selectedPayment;
+            }
+        });
+    }
+}
+
 // Initialize all UX features
 document.addEventListener('DOMContentLoaded', () => {
     initTypingAnimation();
@@ -508,4 +564,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initParallax();
     // initCursorTrail(); // Uncomment for cursor trail effect
     initSectionReveal();
+    initPaymentMethods();
 });
