@@ -46,46 +46,99 @@ window.addEventListener('scroll', () => {
 
 // Form submission handling
 const bookingForm = document.getElementById('booking-form');
+const bookingFormStatus = document.getElementById('submit-status');
 
-bookingForm.addEventListener('submit', async (e) => {
+function setSubmitStatus(message, type) {
+    if (!bookingFormStatus) {
+        return;
+    }
+    bookingFormStatus.textContent = message;
+    bookingFormStatus.className = `submit-status ${type}`;
+}
+
+function clearPaymentSelection() {
+    if (!bookingForm) {
+        return;
+    }
+    const selectedPayment = bookingForm.querySelector('.payment-option.selected');
+    if (selectedPayment) {
+        selectedPayment.classList.remove('selected');
+    }
+}
+
+async function handleBookingSubmit(e) {
     e.preventDefault();
 
-    // Get form data
+    if (!bookingForm) {
+        return;
+    }
+
     const formData = new FormData(bookingForm);
     const data = Object.fromEntries(formData);
 
-    // Validate required fields
     if (!data.name || !data.email || !data.service || !data.message) {
-        alert('Bitte füllen Sie alle Pflichtfelder aus.');
+        alert('Bitte alle Pflichtfelder ausfuellen.');
         return;
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
-        alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+        alert('Bitte geben Sie eine gueltige E-Mail-Adresse ein.');
         return;
     }
 
-    // Validate privacy checkbox
     if (!data.privacy) {
-        alert('Bitte akzeptieren Sie die Datenschutzerklärung.');
+        alert('Bitte akzeptieren Sie die Datenschutzerklaerung.');
         return;
     }
 
-    // Get submit button
+    const selectedPayment = bookingForm.querySelector('.payment-option.selected');
+    if (selectedPayment) {
+        formData.set('payment-method', selectedPayment.dataset.method || selectedPayment.textContent.trim());
+    }
+
     const submitBtn = bookingForm.querySelector('.btn-submit');
-    const originalText = submitBtn.innerHTML;
+    const originalText = submitBtn ? submitBtn.innerHTML : '';
 
-    // Show loading state
-    submitBtn.innerHTML = 'Wird gesendet...';
-    submitBtn.disabled = true;
+    if (submitBtn) {
+        submitBtn.innerHTML = '<span class="loading-spinner" style="width: 20px; height: 20px; border-width: 2px; margin-right: 8px;"></span> Sende...';
+        submitBtn.disabled = true;
+    }
 
-    // Simulate form submission (replace with actual API call)
     try {
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const response = await fetch(bookingForm.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        });
 
-        // Show success message
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => null);
+            const message = errorData?.errors?.map(err => err.message).join(' ') || 'Das Formular konnte nicht gesendet werden.';
+            throw new Error(message);
+        }
+
+        setSubmitStatus('Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen.', 'success');
+        showSuccessMessage();
+        bookingForm.reset();
+        clearPaymentSelection();
+
+    } catch (error) {
+        setSubmitStatus('Es gab einen Fehler beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.', 'error');
+        console.error('Form submission error:', error);
+    } finally {
+        if (submitBtn) {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    }
+}
+
+if (bookingForm) {
+    bookingForm.addEventListener('submit', handleBookingSubmit);
+}
+
+// Show success message
         showSuccessMessage();
 
         // Reset form
@@ -545,23 +598,6 @@ function initPaymentMethods() {
         });
     });
 
-    // Store selected payment in form data
-    const form = document.getElementById('booking-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            if (selectedPayment) {
-                // Add hidden input for payment method
-                let input = form.querySelector('input[name="payment-method"]');
-                if (!input) {
-                    input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'payment-method';
-                    form.appendChild(input);
-                }
-                input.value = selectedPayment;
-            }
-        });
-    }
 }
 
 // HTML escaping for XSS prevention
@@ -660,53 +696,10 @@ function getLanguageColor(language) {
 // Enhanced Form Validation with Status Feedback
 function initEnhancedFormValidation() {
     const form = document.getElementById('booking-form');
-    const statusElement = document.getElementById('submit-status');
 
     if (!form) {
         return;
     }
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const submitBtn = form.querySelector('.btn-submit');
-        const originalText = submitBtn.innerHTML;
-
-        // Show loading state
-        submitBtn.innerHTML = '<span class="loading-spinner" style="width: 20px; height: 20px; border-width: 2px; margin-right: 8px;"></span> Sende...';
-        submitBtn.disabled = true;
-
-        // Simulate form submission (replace with actual endpoint)
-        try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            // Show success message
-            if (statusElement) {
-                statusElement.textContent = 'Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen.';
-                statusElement.className = 'submit-status success';
-            }
-
-            // Reset form
-            form.reset();
-
-            // Clear payment selection
-            const selectedPayment = form.querySelector('.payment-option.selected');
-            if (selectedPayment) {
-                selectedPayment.classList.remove('selected');
-            }
-
-        } catch (error) {
-            // Show error message
-            if (statusElement) {
-                statusElement.textContent = 'Es gab einen Fehler beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.';
-                statusElement.className = 'submit-status error';
-            }
-        } finally {
-            // Restore button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    });
 
     // Real-time validation feedback
     const requiredFields = form.querySelectorAll('[required]');
